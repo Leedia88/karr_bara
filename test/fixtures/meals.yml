@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fry: one
+  menu: one
+  burger: one
+  dessert: one
+  drink: one
+  burger: one
+  price: 1.5
+
+two:
+  fry: two
+  menu: two
+  burger: two
+  dessert: two
+  drink: two
+  burger: two
+  price: 1.5

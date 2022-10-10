@@ -1,0 +1,7 @@
+<h1>Orders#new</h1>
+
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.label :quantity, "Nombre de burgers:" %>
+  <%= form.select :quantity %>
+  <%= form.submit "Commander" %>
+<% end %>
