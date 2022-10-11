@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'order_meals/new'
+  get 'order_meals/edit'
+  get 'order_meals/update'
+  get 'order_meals/destroy'
+  get 'order_meals/show'
   get 'meals/new'
   get 'meals/create'
   get 'meals/editdestroy'
