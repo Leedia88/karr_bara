@@ -5,9 +5,15 @@ class MealsController < ApplicationController
   def create
   end
 
-  def editdestroy
+  def edit
   end
 
   def index
+    puts params
+    @order = params[:order_id]
+    @meals = OrderMeal.where(order_id:@order)
+  end
+
+  def destroy
   end
 end
