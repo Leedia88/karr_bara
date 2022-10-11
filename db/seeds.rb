@@ -13,7 +13,8 @@ Steak.destroy_all
 Dessert.destroy_all 
 Meal.destroy_all
 Cooking.destroy_all
-Recipe.destroy_all 
+Recipe.destroy_all
+Menu.destroy_all 
 
 
 Menu.create(name:"")
@@ -23,7 +24,7 @@ Menu.create(name:"Burger")
 Menu.create(name:"Frites")
 
 
-Steak.create(name:"Steak")
+Steak.create(name:"Viande")
 Steak.create(name:"Veggie")
 Steak.create(name:"Flexi")
 
@@ -50,10 +51,10 @@ Drink.create(name:"Orangina")
 Drink.create(name:"Canada Dry")
 Drink.create(name:"Ice Tea")
 
-Cooking.create(name:"")
-Cooking.create(name:"Bleu")
-Cooking.create(name:"Saignant")
+Cooking.create(name: "")
 Cooking.create(name: "A point")
+Cooking.create(name: "Bleu")
+Cooking.create(name: "Saignant")
 Cooking.create(name: "Bien cuit")
 
 # Schedule.create(slot:"11h50", available:2)

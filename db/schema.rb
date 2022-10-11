@@ -77,18 +77,21 @@ ActiveRecord::Schema.define(version: 2022_10_11_031417) do
     t.bigint "menu_id"
     t.bigint "burger_id"
     t.bigint "cooking_id"
-    t.bigint "dessert_id"
+    t.boolean "dessert"
     t.bigint "fries_id"
+    t.bigint "steak_id"
+    t.bigint "drink_id"
     t.string "option"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["burger_id"], name: "index_order_meals_on_burger_id"
     t.index ["cooking_id"], name: "index_order_meals_on_cooking_id"
-    t.index ["dessert_id"], name: "index_order_meals_on_dessert_id"
+    t.index ["drink_id"], name: "index_order_meals_on_drink_id"
     t.index ["fries_id"], name: "index_order_meals_on_fries_id"
     t.index ["menu_id"], name: "index_order_meals_on_menu_id"
     t.index ["order_id"], name: "index_order_meals_on_order_id"
+    t.index ["steak_id"], name: "index_order_meals_on_steak_id"
   end
 
   create_table "orders", force: :cascade do |t|

@@ -1,0 +1,17 @@
+<h1>Meals#edit</h1>
+<p>Find me in app/views/meals/editdestroy.html.erb</p>
+
+<%= form_with model: @order_meal, url: order_meal_path(@order, @order_meal), method: :patch, local: true do |form| %>
+   <%= form.hidden_field :order_id, :value => @order.id%>
+   <%= form.label :menu_id, "Formule :" %>
+   <%= form.collection_select :menu_id, @menus, :id, :name, {:selected => @menus.first} %> <br>
+   <%= form.label :steak_id, "Steak :" %>
+   <%= form.collection_select :steak_id, @steaks, :id, :name, {:selected => @steaks.first} %> <br>
+   <%= form.label :cooking_id, "Cuisson :" %>
+   <%= form.collection_select :cooking_id, @cookings, :id, :name, {:selected => @cookings.first} %> <br>
+   <%= form.label :drink_id, "Boisson :" %>
+   <%= form.collection_select :drink_id, @drinks, :id, :name, {:selected => @drinks.first} %> <br>
+   <%= form.label :dessert, "Dessert du jour :" %>
+   <%= form.select :dessert, [["", false],["Oui", true]] %> <br>
+   <%= form.submit "Valider" %>
+<% end %>
