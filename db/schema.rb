@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_10_150650) do
+ActiveRecord::Schema.define(version: 2022_10_11_031417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,13 @@ ActiveRecord::Schema.define(version: 2022_10_10_150650) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_meals", force: :cascade do |t|
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_meals_on_order_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "quantity"
     t.datetime "created_at", null: false
@@ -80,6 +87,22 @@ ActiveRecord::Schema.define(version: 2022_10_10_150650) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schedule_orders", force: :cascade do |t|
+    t.bigint "schedule_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_schedule_orders_on_order_id"
+    t.index ["schedule_id"], name: "index_schedule_orders_on_schedule_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "slot"
+    t.integer "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,4 +121,7 @@ ActiveRecord::Schema.define(version: 2022_10_10_150650) do
   add_foreign_key "meals", "drinks"
   add_foreign_key "meals", "fries"
   add_foreign_key "meals", "menus"
+  add_foreign_key "order_meals", "orders"
+  add_foreign_key "schedule_orders", "orders"
+  add_foreign_key "schedule_orders", "schedules"
 end

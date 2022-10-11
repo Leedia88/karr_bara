@@ -1,4 +1,11 @@
 <h1>Orders#edit</h1>
 <p>Find me in app/views/orders/edit.html.erb</p>
 
-<%%>
+<p> Nombre de burgers choisi :<%= @order.quantity %> </p>
+
+<%= form_with model: @schedule_order do |form| %>
+   <%= form.hidden_field :order_id, :value => @order.id%>
+   <%= form.label :schedule_id, "Horaires disponibles :" %>
+   <%= form.collection_select :schedule_id, @schedule, :id, :slot, {:selected => @schedule.first} %> <br>
+   <%= form.submit "Choisir cet horaire" %>
+<% end %>
