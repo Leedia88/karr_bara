@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:edit, :index, :destroy]
+  before_action :set_order, only: [:edit, :index, :destroy, :show]
 
   def index
   end
@@ -9,12 +9,17 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.create!(order_params)
     if @order.save
       redirect_to edit_order_path(@order)
     else
       
     end
+  end
+
+  def show
+    @schedule_order = ScheduleOrder.find_by(order: @order)
+    @order_meals = @order.order_meals
   end
 
   def edit

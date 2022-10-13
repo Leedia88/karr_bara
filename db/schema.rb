@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2022_10_11_031417) do
   end
 
   create_table "fries", force: :cascade do |t|
-    t.string "sauce"
+    t.boolean "extra_fries"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2022_10_11_031417) do
   create_table "order_meals", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "menu_id"
-    t.bigint "burger_id"
+    t.bigint "recipe_id"
     t.bigint "cooking_id"
     t.boolean "dessert"
     t.bigint "fries_id"
@@ -85,12 +85,12 @@ ActiveRecord::Schema.define(version: 2022_10_11_031417) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["burger_id"], name: "index_order_meals_on_burger_id"
     t.index ["cooking_id"], name: "index_order_meals_on_cooking_id"
     t.index ["drink_id"], name: "index_order_meals_on_drink_id"
     t.index ["fries_id"], name: "index_order_meals_on_fries_id"
     t.index ["menu_id"], name: "index_order_meals_on_menu_id"
     t.index ["order_id"], name: "index_order_meals_on_order_id"
+    t.index ["recipe_id"], name: "index_order_meals_on_recipe_id"
     t.index ["steak_id"], name: "index_order_meals_on_steak_id"
   end
 

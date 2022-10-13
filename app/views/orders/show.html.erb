@@ -1,0 +1,25 @@
+<h1>Orders#show</h1>
+<p>Find me in app/views/orders/show.html.erb</p>
+<p> Nombre de burgers choisi :<%= @order.quantity %> </p>
+<p> Horaire choisi : <%= @schedule_order.schedule.slot %> </p>
+<br>
+<%# lister les order_meals déjà choisis %>
+<p>Commande :</p>
+<%@order_meals.each do |meal|%>
+  <%= meal.menu.name %> <%= meal.recipe.name %> <%= meal.steak.name %> <%= meal.cooking.name %> <%= meal.drink.name %>
+  <%if meal.dessert %> Avec Dessert du jour <%end%> <br>
+  <%=link_to 'Modifier', edit_order_order_meal_path(@order.id)%>
+  <%= link_to 'Ajouter une frite', edit_order_order_meal_path(@order.id, fries: true) %> <br>
+  <%if @order_meals.size < @order.quantity%>
+    <%=link_to 'Ajouter le même', edit_order_order_meal_path(@order.id, duplicate: true)%> <br>
+  <%end%>
+<%end%>
+<br>
+<%if @order_meals.size < @order.quantity%>
+    <%=link_to 'Choisir le.s burger.s', new_order_order_meal_path(@order.id)%>
+<%end%>
+<%# afficher le prix de la commande %>
+<br>
+<p>Total : €</p>
+<%# afficher le bouton de validation de la commande %>
+<%# Annuler la commande %>

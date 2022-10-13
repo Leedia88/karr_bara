@@ -2,7 +2,6 @@
 <p>Find me in app/views/meals/new.html.erb</p>
 
 <%= form_with model: @order_meal do |form| %>
-   <%= form.hidden_field :order_id, :value => @order.id%>
    <%= form.label :menu_id, "Formule :" %>
    <%= form.collection_select :menu_id, @menus, :id, :name, {:selected => @menus.first} %> <br>
    <%= form.label :steak_id, "Steak :" %>
