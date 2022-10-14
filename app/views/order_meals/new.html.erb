@@ -6,8 +6,9 @@
    <%= form.collection_select :menu_id, @menus, :id, :name, {:selected => @menus.first} %> <br>
    <%= form.label :recipe_id, "Burger :" %>
    <%= form.collection_select :recipe_id, @recipes, :id, :name, {:selected => @recipes.first} %> <br>
-   <%= form.label :steak_id, "Steak :" %>
-   <%= form.collection_select :steak_id, @steaks, :id, :name, {:selected => @steaks.first} %> <br>
+   <%# <%= form.label :steak_id, "Steak :" %> 
+   <%= form.collection_radio_buttons :steak_id, @steaks, :id, :name, {:checked => @steaks.first.id} %>
+   <%# <%= form.collection_select :steak_id, @steaks, :id, :name, {:selected => @steaks.first} %> <br> 
    <%= form.label :cooking_id, "Cuisson :" %>
    <%= form.collection_select :cooking_id, @cookings, :id, :name, {:selected => @cookings.first} %> <br>
    <%= form.label :drink_id, "Boisson :" %>

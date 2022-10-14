@@ -10,8 +10,7 @@ class CreateOrderMeals < ActiveRecord::Migration[5.2]
       t.references :steak, index: true
       t.references :drink, index: true
       t.string :option
-      t.float :price
-
+      t.float :price, :default => 0
       t.timestamps
     end
   end

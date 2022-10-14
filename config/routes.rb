@@ -4,10 +4,9 @@ Rails.application.routes.draw do
 root to: "orders#new"
   
 resources :orders do
+    resources :schedule_orders
     resources :order_meals
 end
 resources :meals
-resources :schedule_orders
-
 
 end

@@ -1,18 +1,20 @@
 <h1>OrderMeals#edit</h1>
 <p>Find me in app/views/order_meals/edit.html.erb</p>
 
-<%= form_with model: @order_meal, url: order_order_meals_path(@order, @order_meal), method: :patch, local: true do |form| %>
+<%= form_with model: @order_meal, url: order_order_meal_path(@order, @order_meal), method: :patch, local: true do |form| %>
    <%= form.label :menu_id, "Formule :" %>
-   <%= form.collection_select :menu_id, @menus, :id, :name, {:selected => @menus.first} %> <br>
+   <%= form.collection_select :menu_id, @menus, :id, :name,  {:selected => @order_meal.menu_id}%> <br>
    <%= form.label :recipe_id, "Burger :" %>
-   <%= form.collection_select :recipe_id, @recipes, :id, :name %> <br>
+   <%= form.collection_select :recipe_id, @recipes, :id, :name, {:selected => @order_meal.recipe_id}  %> <br>
    <%= form.label :steak_id, "Steak :" %>
-   <%= form.collection_select :steak_id, @steaks, :id, :name %> <br>
+   <%= form.collection_select :steak_id, @steaks, :id, :name, {:selected => @order_meal.steak_id}  %> <br>
    <%= form.label :cooking_id, "Cuisson :" %>
-   <%= form.collection_select :cooking_id, @cookings, :id, :name%> <br>
+   <%= form.collection_select :cooking_id, @cookings, :id, :name , {:selected => @order_meal.cooking_id} %> <br>
    <%= form.label :drink_id, "Boisson :" %>
-   <%= form.collection_select :drink_id, @drinks, :id, :name %> <br>
+   <%= form.collection_select :drink_id, @drinks, :id, :name , {:selected => @order_meal.drink_id} %> <br>
    <%= form.label :dessert, "Dessert du jour :" %>
-   <%= form.select :dessert, [["", false],["Oui", true]] %> <br>
+   <%= form.select :dessert, [["", false],["Oui", true]] , {:selected => @order_meal.dessert}  %> <br>
    <%= form.submit "Valider" %>
 <% end %>
+
+<%=link_to "Retour à la commande", order_path(@order)%>

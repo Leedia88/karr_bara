@@ -1,0 +1,10 @@
+<h1>ScheduleOrders#new</h1>
+
+<p> Nombre de burgers choisi :<%= @order.quantity %> </p>
+
+<%= form_with model: @schedule_order, url: order_schedule_orders_path(@order), method: :post do |form| %>
+   <%= form.hidden_field :order_id, :value => @order.id%>
+   <%= form.label :schedule_id, "Horaires disponibles :" %>
+   <%= form.collection_select :schedule_id, @schedule_available, :id, :slot, {:selected => @schedule_available.first} %> <br>
+   <%= form.submit "Choisir cet horaire" %>
+<% end %>

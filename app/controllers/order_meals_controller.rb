@@ -23,7 +23,6 @@ class OrderMealsController < ApplicationController
 
   def edit
     puts params
-    @order_meal = OrderMeal.new
     @menus = Menu.all 
     @recipes = Recipe.all 
     @cookings = Cooking.all
@@ -44,7 +43,7 @@ class OrderMealsController < ApplicationController
   puts params
     puts "update on i va!!!"
     if @order_meal.update(order_meal_params)
-      redirect_to order_meals_path(@order)
+      redirect_to order_path(@order)
     else
       render edit_order_meal_path(@order, @order_meal)
     end

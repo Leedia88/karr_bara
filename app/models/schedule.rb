@@ -2,8 +2,8 @@ class Schedule < ApplicationRecord
 
     has_many :orders
 
-    def self.available(quantity)
-        Schedule.where("available > ?", quantity)
+    def self.schedule_available(quantity)
+        Schedule.where("available > ? OR available = ?", quantity, quantity)
     end
 
 end

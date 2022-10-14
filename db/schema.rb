@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2022_10_11_031417) do
     t.bigint "steak_id"
     t.bigint "drink_id"
     t.string "option"
-    t.float "price"
+    t.float "price", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cooking_id"], name: "index_order_meals_on_cooking_id"
