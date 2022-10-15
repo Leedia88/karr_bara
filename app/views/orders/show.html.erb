@@ -1,31 +1,35 @@
 <h1>Orders#show</h1>
 <p>Find me in app/views/orders/show.html.erb</p>
-<p> Nombre de burgers choisi :<%= @order.quantity %> <%=link_to 'Modifier', edit_order_path(@order)%></p> 
-<p> Horaire choisi : <%= @schedule_order.schedule.slot %> <%=link_to 'Modifier', edit_order_schedule_order_path(@order, @schedule_order)%></p>
-<%# lister les order_meals déjà choisis %>
-<ul>Commande :
-<%@order_meals.each do |meal|%>
-  <li><%= meal.menu.name %> <%= meal.recipe.name %> 
-  <%if meal.is_not_meat?%>
-    <%= meal.steak.name %> 
-    <%end%>
-    <%= meal.cooking.name %> <%= meal.drink.name %>
-  <%if meal.dessert %> Avec Dessert du jour <%end%> 
-  <%=link_to 'Modifier', edit_order_order_meal_path(@order.id, meal)%>
-  <%# <%= link_to 'Ajouter une frite', edit_order_order_meal_path(@order.id, fries: true) %> 
-  <br>
-  <%if @order_meals.size < @order.quantity%>
-    <%=link_to 'Ajouter le même', edit_order_order_meal_path(@order.id, meal, duplicate: true)%> <br>
-  <%end%>
-  </li>
-<%end%>
-<br>
-</ul>
-<%if @order_meals.size < @order.quantity%>
-    <%=link_to 'Choisir le.s burger.s', new_order_order_meal_path(@order.id)%>
-<%end%>
-<%# afficher le prix de la commande %>
+
 <br>
 <p>Total : <%=@order.total_amount%>€</p>
-<%# afficher le bouton de validation de la commande %>
-<%# Annuler la commande %>
+<div class="card m-3">
+  <h5 class="card-header"> Commande de <%= @order.quantity %> burger.s</h5>
+  <div class="card-body">
+    <h5 class="card-title">Horaire : <%= @order.schedule.slot %>  <%=link_to 'Modifier', edit_order_path(@order)%></h5>
+    <ul class="list-group list-group-flush">
+      <%@order_meals.each do |meal|%>
+        <li class="list-group-item">
+          <%= meal.menu.name %> <%= meal.recipe.name %>
+          <%if meal.is_not_meat?%>
+            <%= meal.steak.name %>
+          <%end%>
+          <%= meal.cooking.name %> <%= meal.drink.name %>
+          <%if meal.dessert %> Avec Dessert du jour <%end%>
+          <%=link_to 'Modifier', edit_order_order_meal_path(@order.id, meal)%>
+          <%# <%= link_to 'Ajouter une frite', edit_order_order_meal_path(@order.id, fries: true) %>
+          <br>
+          <%if @order_meals.size < @order.quantity%>
+            <%=link_to 'Ajouter le même', edit_order_order_meal_path(@order.id, meal, duplicate: true)%> <br>
+          <%end%>
+        </li>
+      <%end%>
+    </ul>
+    <%if @order_meals.size < @order.quantity%>
+      <%=link_to 'Ajouter un burger', new_order_order_meal_path(@order.id), :class => "btn btn-primary"%>
+    <%end%>
+    <%# afficher le prix de la commande %>
+    <p>Bouton valider la commande si tous les burgers sont sélectionnés</p>
+  </div>
+</div>
+bouton : Annuler la commande

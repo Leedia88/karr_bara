@@ -23,24 +23,15 @@ Recipe.destroy_all
 Menu.destroy_all 
 
 
-Menu.create(name:"")
 Menu.create(name:"Menu")
 Menu.create(name:"Burger Frites")
 Menu.create(name:"Burger")
 Menu.create(name:"Frites")
 
-
 Steak.create(name:"Viande")
 Steak.create(name:"Veggie")
 Steak.create(name:"Flexi")
 
-Recipe.create(name: "")
-Recipe.create(name:"Devezh")
-Recipe.create(name:"Barbecue")
-Recipe.create(name:"Classic")
-Recipe.create(name:"Kampinod")
-
-Recipe.create(name: "")
 Recipe.create(name:"Devezh")
 Recipe.create(name:"Barbecue")
 Recipe.create(name:"Classic")
@@ -49,23 +40,22 @@ Recipe.create(name:"Kampinod")
 Dessert.create(name:"Cookie")
 Dessert.create(name:"Brownie")
 
-Drink.create(name:"")
 Drink.create(name:"Citronnade Maison")
 Drink.create(name:"Eau")
 Drink.create(name:"Perrier")
-Drink.create(name:"Bière 'Vieux Singe'")
 Drink.create(name:"Coca Cola")
 Drink.create(name:"Coca Cola Zero")
 Drink.create(name:"Dr Pepper")
 Drink.create(name:"Orangina")
 Drink.create(name:"Canada Dry")
 Drink.create(name:"Lipton Ice Tea")
+Drink.create(name:"Bière 'London Bitter'")
+Drink.create(name:"Bière 'Nouveau Monde'")
 
-Cooking.create(name: "")
-Cooking.create(name: "A point")
-Cooking.create(name: "Bleu")
 Cooking.create(name: "Saignant")
+Cooking.create(name: "A point")
 Cooking.create(name: "Bien cuit")
+Cooking.create(name: "Bleu")
 
 Schedule.create(slot:"11h50", available:2)
 Schedule.create(slot:"12h00", available:3)

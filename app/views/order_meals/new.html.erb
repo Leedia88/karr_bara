@@ -1,19 +1,40 @@
 <h1>OrderMeals#new</h1>
 <p>Find me in app/views/order_meals/new.html.erb</p>
-
-<%= form_with model: @order_meal, url: order_order_meals_path(@order), method: :post do |form| %>
-   <%= form.label :menu_id, "Formule :" %>
-   <%= form.collection_select :menu_id, @menus, :id, :name, {:selected => @menus.first} %> <br>
-   <%= form.label :recipe_id, "Burger :" %>
-   <%= form.collection_select :recipe_id, @recipes, :id, :name, {:selected => @recipes.first} %> <br>
-   <%# <%= form.label :steak_id, "Steak :" %> 
-   <%= form.collection_radio_buttons :steak_id, @steaks, :id, :name, {:checked => @steaks.first.id} %>
-   <%# <%= form.collection_select :steak_id, @steaks, :id, :name, {:selected => @steaks.first} %> <br> 
-   <%= form.label :cooking_id, "Cuisson :" %>
-   <%= form.collection_select :cooking_id, @cookings, :id, :name, {:selected => @cookings.first} %> <br>
-   <%= form.label :drink_id, "Boisson :" %>
-   <%= form.collection_select :drink_id, @drinks, :id, :name, {:selected => @drinks.first} %> <br>
-   <%= form.label :dessert, "Dessert du jour :" %>
-   <%= form.select :dessert, [["", false],["Oui", true]] %> <br>
-   <%= form.submit "Valider" %>
-<% end %>
+<div class="m-3">
+  <%= form_with model: @order_meal, url: order_order_meals_path(@order), method: :post do |form| %>
+    <div>Formule :</div>
+    <div class="buttons">
+      <%= form.collection_radio_buttons :menu_id, @menus, :id, :name , {:checked => @menus.first.id} do |b|
+         b.radio_button(class: "buttons", :label => b.text) 
+       end %>
+    </div>
+    <div>Burger :</div>
+    <div class="buttons">
+      <%= form.collection_radio_buttons :recipe_id, @recipes, :id, :name , {:checked => @recipes.first.id} do |b|
+         b.radio_button(class: "buttons", :label => b.text) 
+       end %>
+    </div>
+    <div>Steak :</div>
+    <div class="buttons">
+      <%= form.collection_radio_buttons :steak_id, @steaks, :id, :name , {:checked => @steaks.first.id} do |b|
+         b.radio_button(class: "buttons", :label => b.text) 
+       end %>
+    </div>
+    <div>Cuisson :</div>
+    <div class="buttons">
+      <%= form.collection_radio_buttons :cooking_id, @cookings, :id, :name , {:checked => @cookings.first.id} do |b|
+         b.radio_button(class: "buttons", :label => b.text) 
+       end %>
+    </div>
+    <div>Boisson :</div>
+    <div class="buttons">
+      <%= form.collection_radio_buttons :drink_id, @drinks, :id, :name , {:checked => @drinks.first.id} do |b|
+         b.radio_button(class: "buttons", :label => b.text) 
+       end %>
+    </div>
+    <div>Dessert du jour :</div>
+    <div>
+      <%= form.select :dessert, [["", false],["Oui", true]] , :class => "form-select"%> </div>
+    <%= form.submit "Valider", :class => "btn btn-primary" %>
+  <% end %>
+</div>

@@ -5,7 +5,7 @@ class ScheduleOrdersController < ApplicationController
 
     def new
         @schedule_order = ScheduleOrder.new
-        @schedule_available = Schedule.schedule_available(@order.quantity)
+        @schedule_available = Schedule.schedule_available(@order.quantity).order(:slot)
     end
 
     def create
@@ -30,7 +30,6 @@ class ScheduleOrdersController < ApplicationController
     end
     
     def update
-        puts params
         if @schedule_order.update(schedule_order_params)
             puts "ouais ça marche"
             @schedule = @schedule_order.schedule

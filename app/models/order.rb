@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
 
+    belongs_to :schedule
     has_many :order_meals
+    
 
     def total_amount
         amount = 0

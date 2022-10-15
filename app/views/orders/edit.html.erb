@@ -1,9 +1,12 @@
 <h1>Orders#edit</h1>
 <p>Find me in app/views/orders/edit.html.erb</p>
 
-<%= form_with model: @order do |form| %>
-   <%= form.label :quantity, "Nombre de burgers:" %>
-   <%= form.select :quantity, (0..10), selected: @order.quantity %>   
-   <%= form.submit "Valider" %>
-<% end %>
+<div class="m-3">
+  <%= form_with model: @order, url: order_path(@order), method: :patch do |form| %>
+    <%= form.hidden_field :quantity%>
+    <%= form.label :schedule_id, "Horaires disponibles :" %>
+    <%= form.collection_select :schedule_id, @schedule_available, :id, :slot, {:selected => @schedule_available.first}, :class => "form-select" %>
+    <%= form.submit "Choisir cet horaire" , :class => "btn btn-primary"%>
+  <% end %>
+</div>
 

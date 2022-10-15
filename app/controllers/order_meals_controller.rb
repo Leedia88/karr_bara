@@ -14,22 +14,20 @@ class OrderMealsController < ApplicationController
   end
 
   def create
-    puts params
-    @order_meal = OrderMeal.create(order_meal_params.merge(order:@order))
+
+    @order_meal = OrderMeal.create!(order_meal_params.merge(order:@order))
     if @order_meal.save
       redirect_to order_path(@order)
     end
   end
 
   def edit
-    puts params
     @menus = Menu.all 
     @recipes = Recipe.all 
     @cookings = Cooking.all
     @steaks = Steak.all
     @drinks = Drink.all
     if params[:fries]
-      puts "Ouiiiiiiiii"
       redirect_to order_path(@order)
     elsif params[:duplicate]
       OrderMeal.create(menu: @order_meal.menu, recipe: @order_meal.recipe, steak: @order_meal.steak, cooking: @order_meal.cooking, 
@@ -40,8 +38,6 @@ class OrderMealsController < ApplicationController
   end
 
   def update
-  puts params
-    puts "update on i va!!!"
     if @order_meal.update(order_meal_params)
       redirect_to order_path(@order)
     else

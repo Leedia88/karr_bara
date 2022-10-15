@@ -1,0 +1,59 @@
+label {
+    display: flex;
+    align-items: center;
+    margin: 15px 20px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+label input[type="radio"] {
+    opacity: 0;
+  }
+  
+  .design {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    outline-offset: 3px;
+    outline: 3px solid #888888;
+    margin-right: 20px;
+  }
+
+label input[type="radio"]:checked~.design {
+    outline-color: #a90a9c;
+    background: #a90a9c;
+  }
+  
+  input[type="radio"]:checked~.value {
+    color: #a90a9c;
+  }
+
+  .buttons {
+    background: #dfdfdf;
+    padding: 4px;
+    border-radius: 3px;
+    position: relative;
+    width: fit-content;
+  }
+
+  .buttons input {
+    appearance: none;
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 5px 10px;
+    background: #3f414d;
+    color: #ececec;
+    font-size: 15px;
+    font-family: sans-serif;
+    transition: all 0.1s;
+  }
+
+  .buttons input:checked {
+    background: #c926bb;
+
+  }
+
+  .buttons input::before {
+    content: attr(label);
+    text-align: center;
+  }
