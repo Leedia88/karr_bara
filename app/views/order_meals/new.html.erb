@@ -14,27 +14,33 @@
          b.radio_button(class: "buttons", :label => b.text) 
        end %>
     </div>
-    <div>Steak :</div>
-    <div class="buttons">
-      <%= form.collection_radio_buttons :steak_id, @steaks, :id, :name , {:checked => @steaks.first.id} do |b|
-         b.radio_button(class: "buttons", :label => b.text) 
-       end %>
-    </div>
     <div>Cuisson :</div>
     <div class="buttons">
       <%= form.collection_radio_buttons :cooking_id, @cookings, :id, :name , {:checked => @cookings.first.id} do |b|
          b.radio_button(class: "buttons", :label => b.text) 
        end %>
     </div>
+    <div><em>* Steak Veggie avec charcuterie selon le burger </em></div>
     <div>Boisson :</div>
     <div class="buttons">
-      <%= form.collection_radio_buttons :drink_id, @drinks, :id, :name , {:checked => @drinks.first.id} do |b|
+      <%= form.collection_radio_buttons :drink_id, @drinks, :id, :name  do |b|
          b.radio_button(class: "buttons", :label => b.text) 
        end %>
     </div>
+    <div><em>* Nombre limité</em></div>
     <div>Dessert du jour :</div>
-    <div>
-      <%= form.select :dessert, [["", false],["Oui", true]] , :class => "form-select"%> </div>
+    <div class="buttons">
+    <%= form.collection_radio_buttons :dessert, [["Non", false],["Oui", true]], :last, :first, {:checked => false} do |b|
+       b.radio_button(class: "buttons", :label => b.text) 
+       end %> </div>
+   <div>Demande particulière * :</div>
+   <div class="buttons">
+      <%=form.text_field :option%>
+   </div>
+   <div><em>* Si approbation du chef!</em></div>
+   <div>
     <%= form.submit "Valider", :class => "btn btn-primary" %>
+    </div>
   <% end %>
+   <%=link_to "Retour", order_path(@order)%>
 </div>

@@ -2,7 +2,7 @@
 <p>Find me in app/views/orders/show.html.erb</p>
 
 <br>
-<p>Total : <%=@order.total_amount%>€</p>
+
 <div class="card m-3">
   <h5 class="card-header"> Commande de <%= @order.quantity %> burger.s</h5>
   <div class="card-body">
@@ -11,9 +11,6 @@
       <%@order_meals.each do |meal|%>
         <li class="list-group-item">
           <%= meal.menu.name %> <%= meal.recipe.name %>
-          <%if meal.is_not_meat?%>
-            <%= meal.steak.name %>
-          <%end%>
           <%= meal.cooking.name %> <%= meal.drink.name %>
           <%if meal.dessert %> Avec Dessert du jour <%end%>
           <%=link_to 'Modifier', edit_order_order_meal_path(@order.id, meal)%>
@@ -31,5 +28,7 @@
     <%# afficher le prix de la commande %>
     <p>Bouton valider la commande si tous les burgers sont sélectionnés</p>
   </div>
+
+<p>Total : <%=@order.total_amount%>€</p>
+<div class="mb-3 text-center"><%=link_to 'Annuler', root_path(@order.id), :class => "btn btn-outline-danger"%></div>
 </div>
-bouton : Annuler la commande

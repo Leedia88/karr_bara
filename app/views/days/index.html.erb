@@ -2,18 +2,18 @@
 <p>Find me in app/views/days/index.html.erb</p>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Commander en ligne
+  Réserver en ligne
 </button>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Commander</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Quantité</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <p>Nombre de burgers :</p>
+      <div class="pb-3">
         <%=link_to "1", new_order_path(:quantity => 1 ), :class => "btn btn-primary" %>
         <%=link_to "2", new_order_path(:quantity => 2), :class => "btn btn-primary" %>
         <%=link_to "3", new_order_path(:quantity => 3 ), :class => "btn btn-primary" %>
@@ -22,6 +22,7 @@
         <%=link_to "6", new_order_path(:quantity => 6 ), :class => "btn btn-primary" %>
         <%=link_to "7", new_order_path(:quantity => 7 ), :class => "btn btn-primary" %>
         <%=link_to "8", new_order_path(:quantity => 8 ), :class => "btn btn-primary" %>
+        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>

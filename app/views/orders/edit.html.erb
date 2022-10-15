@@ -2,7 +2,7 @@
 <p>Find me in app/views/orders/edit.html.erb</p>
 
 <div class="m-3">
-  <%= form_with model: @order, url: order_path(@order), method: :patch do |form| %>
+  <%= form_with model: @order, url: order_path(@order), method: :patch, local: true do |form| %>
     <%= form.hidden_field :quantity%>
     <%= form.label :schedule_id, "Horaires disponibles :" %>
     <%= form.collection_select :schedule_id, @schedule_available, :id, :slot, {:selected => @schedule_available.first}, :class => "form-select" %>

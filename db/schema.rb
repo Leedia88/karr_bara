@@ -15,17 +15,6 @@ ActiveRecord::Schema.define(version: 2022_10_15_094347) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "burgers", force: :cascade do |t|
-    t.bigint "recipe_id"
-    t.bigint "cooking_id"
-    t.bigint "steak_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cooking_id"], name: "index_burgers_on_cooking_id"
-    t.index ["recipe_id"], name: "index_burgers_on_recipe_id"
-    t.index ["steak_id"], name: "index_burgers_on_steak_id"
-  end
-
   create_table "cookings", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -39,38 +28,10 @@ ActiveRecord::Schema.define(version: 2022_10_15_094347) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "desserts", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "drinks", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "fries", force: :cascade do |t|
-    t.boolean "extra_fries"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "meals", force: :cascade do |t|
-    t.bigint "fry_id"
-    t.bigint "menu_id"
-    t.bigint "burger_id"
-    t.bigint "dessert_id"
-    t.bigint "drink_id"
-    t.float "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["burger_id"], name: "index_meals_on_burger_id"
-    t.index ["dessert_id"], name: "index_meals_on_dessert_id"
-    t.index ["drink_id"], name: "index_meals_on_drink_id"
-    t.index ["fry_id"], name: "index_meals_on_fry_id"
-    t.index ["menu_id"], name: "index_meals_on_menu_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -85,8 +46,6 @@ ActiveRecord::Schema.define(version: 2022_10_15_094347) do
     t.bigint "recipe_id"
     t.bigint "cooking_id"
     t.boolean "dessert"
-    t.bigint "fries_id"
-    t.bigint "steak_id"
     t.bigint "drink_id"
     t.string "option"
     t.float "price", default: 0.0
@@ -94,11 +53,9 @@ ActiveRecord::Schema.define(version: 2022_10_15_094347) do
     t.datetime "updated_at", null: false
     t.index ["cooking_id"], name: "index_order_meals_on_cooking_id"
     t.index ["drink_id"], name: "index_order_meals_on_drink_id"
-    t.index ["fries_id"], name: "index_order_meals_on_fries_id"
     t.index ["menu_id"], name: "index_order_meals_on_menu_id"
     t.index ["order_id"], name: "index_order_meals_on_order_id"
     t.index ["recipe_id"], name: "index_order_meals_on_recipe_id"
-    t.index ["steak_id"], name: "index_order_meals_on_steak_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -115,15 +72,6 @@ ActiveRecord::Schema.define(version: 2022_10_15_094347) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "schedule_orders", force: :cascade do |t|
-    t.bigint "schedule_id"
-    t.bigint "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_schedule_orders_on_order_id"
-    t.index ["schedule_id"], name: "index_schedule_orders_on_schedule_id"
-  end
-
   create_table "schedules", force: :cascade do |t|
     t.string "slot"
     t.integer "available"
@@ -131,21 +79,5 @@ ActiveRecord::Schema.define(version: 2022_10_15_094347) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "steaks", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "burgers", "cookings"
-  add_foreign_key "burgers", "recipes"
-  add_foreign_key "burgers", "steaks"
-  add_foreign_key "meals", "burgers"
-  add_foreign_key "meals", "desserts"
-  add_foreign_key "meals", "drinks"
-  add_foreign_key "meals", "fries"
-  add_foreign_key "meals", "menus"
   add_foreign_key "order_meals", "orders"
-  add_foreign_key "schedule_orders", "orders"
-  add_foreign_key "schedule_orders", "schedules"
 end

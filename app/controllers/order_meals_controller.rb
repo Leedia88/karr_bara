@@ -9,8 +9,7 @@ class OrderMealsController < ApplicationController
     @menus = Menu.all 
     @recipes = Recipe.all 
     @cookings = Cooking.all
-    @steaks = Steak.all
-    @drinks = Drink.all
+    @drinks = Drink.list
   end
 
   def create

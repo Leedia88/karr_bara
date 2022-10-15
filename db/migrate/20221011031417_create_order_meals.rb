@@ -6,8 +6,6 @@ class CreateOrderMeals < ActiveRecord::Migration[5.2]
       t.references :recipe, index: true
       t.references :cooking, index: true
       t.boolean :dessert
-      t.references :fries, index: true
-      t.references :steak, index: true
       t.references :drink, index: true
       t.string :option
       t.float :price, :default => 0
