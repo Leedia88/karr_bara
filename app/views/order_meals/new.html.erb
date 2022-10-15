@@ -1,7 +1,7 @@
 <h1>OrderMeals#new</h1>
 <p>Find me in app/views/order_meals/new.html.erb</p>
 <div class="m-3">
-  <%= form_with model: @order_meal, url: order_order_meals_path(@order), method: :post do |form| %>
+  <%= form_with model: @order_meal, url: order_order_meals_path(@order), method: :post, local: true do |form| %>
     <div>Formule :</div>
     <div class="buttons">
       <%= form.collection_radio_buttons :menu_id, @menus, :id, :name , {:checked => @menus.first.id} do |b|

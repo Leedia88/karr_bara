@@ -12,17 +12,24 @@ class OrdersController < ApplicationController
   end
 
   def create
-    puts params
-    @order = Order.create!(order_params)
-    if @order.save
-      redirect_to order_path(@order)
-    else
-      
+    @order = Order.new(order_params)
+    respond_to do |format|
+      format.html {
+        if @order.save
+          redirect_to order_path(@order)
+        else
+          
+        end
+      }
     end
   end
 
   def show
-    @order_meals = @order.order_meals.order(:id)
+    respond_to do |format|
+      format.html {
+        @order_meals = @order.order_meals.order(:id)
+      }
+    end
   end
 
   def edit
