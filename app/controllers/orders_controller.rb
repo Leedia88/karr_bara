@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:edit, :destroy, :show, :update]
 
   def index
+    @total_available = Schedule.total_available
     @schedules = Schedule.all.order(:slot)
   end
 
@@ -12,13 +13,17 @@ class OrdersController < ApplicationController
   end
 
   def create
+    
     @order = Order.new(order_params)
     respond_to do |format|
       format.html {
         if @order.save
+          @new_available = @order.schedule.available - @order.quantity
+          @order.schedule.update_attributes(available: @new_available)
           redirect_to order_path(@order)
         else
-          
+          redirect_to root_path
+          flash[:danger] = "Prénom incorrect!"
         end
       }
     end
@@ -42,8 +47,6 @@ class OrdersController < ApplicationController
     puts params
     if @order.update(order_params)
       puts "ouais ça marche yoooo"
-      puts  @order.schedule.available
-      puts @order.quantity.class
       @new_available = @order.schedule.available - @order.quantity
       @order.schedule.update_attributes(available: @new_available)
       redirect_to order_path(@order)
@@ -54,7 +57,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:quantity, :schedule_id)
+    params.require(:order).permit(:quantity, :schedule_id, :user)
   end
 
   def set_order

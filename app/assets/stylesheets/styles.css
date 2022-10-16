@@ -20,7 +20,7 @@ label input[type="radio"] {
   }
 
 label input[type="radio"]:checked~.design {
-    outline-color: #a90a9c;
+    outline-color: #f5a607;
     background: #a90a9c;
   }
   
@@ -56,4 +56,9 @@ label input[type="radio"]:checked~.design {
   .buttons input::before {
     content: attr(label);
     text-align: center;
+  }
+
+  .header-kb{
+    background: url("kb_logo.jpg") no-repeat center center;
+    height: 440px;
   }

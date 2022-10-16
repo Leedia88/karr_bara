@@ -2,8 +2,15 @@
 <div class="m-3">
   <%= form_with model: @order, url: orders_path, method: :post, local: true do |form| %>
     <%= form.hidden_field :quantity, :value => @quantity %>
-    <%= form.label :schedule_id, "Horaires disponibles :" %>
+    <div>
+    <div>Prénom* :</div>
+    <%= form.text_field :user %> </div>
+    <div>
+    Horaires disponibles : 
     <%= form.collection_select :schedule_id, @schedule_available, :id, :slot, {:selected => @schedule_available.first}, :class => "form-select" %>
+    </div>
+    <div class="mt-3">
     <%= form.submit "Choisir cet horaire" , :class => "btn btn-primary"%>
+    </div>
   <% end %>
 </div>
