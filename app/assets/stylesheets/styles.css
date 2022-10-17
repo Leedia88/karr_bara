@@ -62,3 +62,15 @@ label input[type="radio"]:checked~.design {
     background: url("kb_logo.jpg") no-repeat center center;
     height: 440px;
   }
+
+  .choose-schedule .panel-default{
+    padding: 31%;
+    margin-top: -27%;
+}
+.choose-schedule .panel-body{
+    padding: 15%;
+    margin-bottom: -50%;
+    background: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

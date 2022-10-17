@@ -8,14 +8,32 @@
       </div>
       <div class="modal-body">
       <div class="pb-3">
+        <%if Schedule.schedule_available(1).present?%>
         <%=link_to "1", new_order_path(:quantity => 1 ), :class => "btn btn-primary" %>
+        <%else%>
+          <p>Plus de réservation possible!</p>
+        <%end%>
+        <%if Schedule.schedule_available(2).present?%>
         <%=link_to "2", new_order_path(:quantity => 2), :class => "btn btn-primary" %>
+        <%end%>
+        <%if Schedule.schedule_available(3).present?%>
         <%=link_to "3", new_order_path(:quantity => 3 ), :class => "btn btn-primary" %>
+        <%end%>
+        <%if Schedule.schedule_available(4).present?%>
         <%=link_to "4", new_order_path(:quantity => 4 ), :class => "btn btn-primary" %>
+        <%end%>
+        <%if Schedule.schedule_available(5).present?%>
         <%=link_to "5", new_order_path(:quantity => 5 ), :class => "btn btn-primary" %>
+        <%end%>
+        <%if Schedule.schedule_available(6).present?%>
         <%=link_to "6", new_order_path(:quantity => 6 ), :class => "btn btn-primary" %>
+        <%end%>
+        <%if Schedule.schedule_available(7).present?%>
         <%=link_to "7", new_order_path(:quantity => 7 ), :class => "btn btn-primary" %>
+        <%end%>
+        <%if Schedule.schedule_available(8).present?%>
         <%=link_to "8", new_order_path(:quantity => 8 ), :class => "btn btn-primary" %>
+        <%end%>
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>

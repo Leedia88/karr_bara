@@ -4,7 +4,7 @@
 <br>
 
 <div class="card m-3">
-  <h5 class="card-header"> Commande de <%= @order.quantity %> burger.s</h5>
+  <h5 class="card-header"> <%= @order.user %> : <%= @order.quantity %> burger.s</h5>
   <div class="card-body">
     <h5 class="card-title">Horaire : <%= @order.schedule.slot %>  <%=link_to 'Modifier', edit_order_path(@order)%></h5>
     <ul class="list-group list-group-flush">

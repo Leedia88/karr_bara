@@ -1,16 +1,36 @@
 <h1>Orders#new</h1>
-<div class="m-3">
-  <%= form_with model: @order, url: orders_path, method: :post, local: true do |form| %>
-    <%= form.hidden_field :quantity, :value => @quantity %>
-    <div>
-    <div>Prénom* :</div>
-    <%= form.text_field :user %> </div>
-    <div>
-    Horaires disponibles : 
-    <%= form.collection_select :schedule_id, @schedule_available, :id, :slot, {:selected => @schedule_available.first}, :class => "form-select" %>
+<div class="container choose-schedule">
+  <div class="row">
+    <div class="col-md-12 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="text-center">
+            <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x text-primary"></i>
+              <i class="fas fa-burger fa-stack-1x fa-inverse"></i>
+            </span>
+            <h2 class="text-center">Réservation</h2>
+            <p>Quantité : <%=@quantity%>  burger.s</p>
+            <div class="form">
+              <%= form_with model: @order, url: orders_path, method: :post, local: true do |form| %>
+                <%= form.hidden_field :quantity, :value => @quantity %>
+                <div class="input-group">
+                  <%= form.text_field :user, placeholder: "Prénom *", class: "form-control" %> </div>
+                <div class="input-group">
+                  Horaires disponibles : 
+                  </div>
+                  <div class="input-group">
+                  <%= form.collection_select :schedule_id, @schedule_available, :id, :slot, {:selected => @schedule_available.first}, :class => "form-select" %>
+                </div>
+                <div class="mt-3">
+                  <%= form.submit "Choisir cet horaire" , :class => "btn btn-lg btn-primary"%>
+                </div>
+              <% end %>
+            </div>
+            
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="mt-3">
-    <%= form.submit "Choisir cet horaire" , :class => "btn btn-primary"%>
-    </div>
-  <% end %>
+  </div>
 </div>
