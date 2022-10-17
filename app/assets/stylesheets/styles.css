@@ -63,12 +63,18 @@ label input[type="radio"]:checked~.design {
     height: 440px;
   }
 
+  .choose-schedule {
+    display: flex;
+    justify-content: center;
+  }
+
   .choose-schedule .panel-default{
-    padding: 31%;
-    margin-top: -27%;
+    /* padding: 31%; */
 }
 .choose-schedule .panel-body{
-    padding: 15%;
+  min-width: 300px;
+  max-width: 540px;
+  padding: 15%;
     margin-bottom: -50%;
     background: #fff;
     border-radius: 5px;
