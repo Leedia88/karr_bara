@@ -30,6 +30,11 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order_meal = OrderMeal.new
+    @menus = Menu.all 
+    @recipes = Recipe.all 
+    @cookings = Cooking.all
+    @drinks = Drink.list
     respond_to do |format|
       format.html {
         @order_meals = @order.order_meals.order(:id)
@@ -54,6 +59,10 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    puts params
+    @order.destroy
+    flash[:warning] = "Commande supprimée"
+    redirect_to root_path
   end
 
   def order_params

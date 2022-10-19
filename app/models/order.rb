@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 
     belongs_to :schedule
-    has_many :order_meals
+    has_many :order_meals, dependent: :delete_all
     
     validates :schedule, :presence => true
     validates :user, :presence => true, 

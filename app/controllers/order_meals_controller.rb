@@ -29,9 +29,7 @@ class OrderMealsController < ApplicationController
     @recipes = Recipe.all 
     @cookings = Cooking.all
     @drinks = Drink.all
-    if params[:fries]
-      redirect_to order_path(@order)
-    elsif params[:duplicate]
+    if params[:duplicate]
       OrderMeal.create(menu: @order_meal.menu, recipe: @order_meal.recipe, cooking: @order_meal.cooking, 
         drink: @order_meal.drink, dessert: @order_meal.dessert, order:@order)
       redirect_to order_path(@order)

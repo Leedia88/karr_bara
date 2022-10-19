@@ -1,37 +1,34 @@
-<h1>OrderMeals#edit</h1>
-<p>Find me in app/views/order_meals/edit.html.erb</p>
-
 <div class="m-3">
-  <%= form_with model: @order_meal, url: order_order_meals_path(@order, @order_meal), method: :patch, local: true do |form| %>
+  <%= form_with model: @order_meal, url: order_order_meals_path(@order), method: :post, local: true do |form| %>
     <div>Formule :</div>
     <div class="buttons">
-      <%= form.collection_radio_buttons :menu_id, @menus, :id, :name , {:checked => @order_meal.menu_id} do |b|
+      <%= form.collection_radio_buttons :menu_id, @menus, :id, :name , {:checked => @menus.first.id} do |b|
          b.radio_button(class: "buttons", :label => b.text) 
        end %>
     </div>
     <div>Burger :</div>
     <div class="buttons">
-      <%= form.collection_radio_buttons :recipe_id, @recipes, :id, :name , {:checked => @order_meal.recipe_id} do |b|
+      <%= form.collection_radio_buttons :recipe_id, @recipes, :id, :name , {:checked => @recipes.first.id} do |b|
          b.radio_button(class: "buttons", :label => b.text) 
        end %>
     </div>
     <div>Cuisson :</div>
     <div class="buttons">
-      <%= form.collection_radio_buttons :cooking_id, @cookings, :id, :name , {:checked => @order_meal.cooking_id} do |b|
+      <%= form.collection_radio_buttons :cooking_id, @cookings, :id, :name , {:checked => @cookings.first.id} do |b|
          b.radio_button(class: "buttons", :label => b.text) 
        end %>
     </div>
     <div><em>* Steak Veggie avec charcuterie selon le burger </em></div>
     <div>Boisson :</div>
     <div class="buttons">
-      <%= form.collection_radio_buttons :drink_id, @drinks, :id, :name, {:checked => @order_meal.drink_id} do |b|
+      <%= form.collection_radio_buttons :drink_id, @drinks, :id, :name  do |b|
          b.radio_button(class: "buttons", :label => b.text) 
        end %>
     </div>
     <div><em>* Nombre limité</em></div>
     <div>Dessert du jour :</div>
     <div class="buttons">
-    <%= form.collection_radio_buttons :dessert, [["Non", false],["Oui", true]], :last, :first, {:checked => @order_meal.dessert} do |b|
+    <%= form.collection_radio_buttons :dessert, [["Non", false],["Oui", true]], :last, :first, {:checked => false} do |b|
        b.radio_button(class: "buttons", :label => b.text) 
        end %> </div>
    <div>Demande particulière * :</div>
@@ -45,6 +42,3 @@
   <% end %>
    <%=link_to "Retour", order_path(@order)%>
 </div>
-
-
-<%=link_to "Retour à la commande", order_path(@order)%>
