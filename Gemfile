@@ -9,6 +9,8 @@ gem "font-awesome-rails"
 gem 'sassc-rails'
 gem 'bootstrap', '~> 4.1.3'
 
+gem 'psych', '< 4'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3'
 # Use postgresql as the database for Active Record
