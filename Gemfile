@@ -5,9 +5,9 @@ ruby '3.1.2'
 
 gem 'htmlbeautifier'
 gem 'table_print'
-gem 'bootstrap'
 gem "font-awesome-rails"
 gem 'sassc-rails'
+gem 'bootstrap', '~> 4.1.3'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
