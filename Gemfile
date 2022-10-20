@@ -9,9 +9,10 @@ gem "font-awesome-rails"
 gem 'sassc-rails'
 gem 'bootstrap', '~> 4.1.3'
 
+gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
+gem 'rails', '~> 6.0.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
