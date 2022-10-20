@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
         <div class="m-3">
-          <%= form_with model: order_meal, url: order_order_meal_path(order.id, order_meal.id), method: :patch, local: true do |form| %>
+          <%= form_with model: order_meal, url: url, method: method, local: true do |form| %>
             <div>Formule :</div>
             <div class="buttons">
               <%= form.collection_radio_buttons :menu_id, menus, :id, :name , {:checked => order_meal.menu_id} do |b|

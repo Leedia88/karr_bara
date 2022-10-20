@@ -25,7 +25,7 @@ Recipe.create(name:"Barbecue")
 Recipe.create(name:"Classic")
 Recipe.create(name:"Kampinod")
 
-Drink.create(name: "")
+Drink.create(name:"Sans Boisson")
 Drink.create(name:"Coca Cola")
 Drink.create(name:"Coca Cola Zero")
 Drink.create(name:"Dr Pepper")
@@ -37,7 +37,7 @@ Drink.create(name:"Eau")
 Drink.create(name:"Perrier")
 Drink.create(name:"Bière ambrée**")
 Drink.create(name:"Bière blonde**")
-Drink.create(name:"Sans Boisson")
+
 
 Cooking.create(name: "Saignant")
 Cooking.create(name: "A point")

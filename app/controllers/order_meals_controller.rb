@@ -1,7 +1,7 @@
 class OrderMealsController < ApplicationController
 
   before_action :set_order
-  before_action :set_order_meal, only: [ :edit, :update, :destroy, :show]
+  before_action :set_order_meal, only: [ :edit, :update, :destroy]
 
 
   def new
@@ -41,7 +41,7 @@ class OrderMealsController < ApplicationController
     if @order_meal.update(order_meal_params)
       redirect_to order_path(@order)
     else
-      render edit_order_meal_path(@order, @order_meal)
+      render edit_order_order_meal_path(@order, @order_meal)
     end
   end
 

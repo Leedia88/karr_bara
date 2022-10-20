@@ -3,6 +3,7 @@ class CreateDays < ActiveRecord::Migration[5.2]
     create_table :days do |t|
       t.string :address
       t.string :name
+      t.integer :quantity
 
       t.timestamps
     end

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2022_10_15_094347) do
   create_table "days", force: :cascade do |t|
     t.string "address"
     t.string "name"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
