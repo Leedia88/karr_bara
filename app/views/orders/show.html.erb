@@ -1,5 +1,5 @@
 
-<div class="container choose-schedule">
+<div class="container choose-burger">
   <div class="row">
     <div class="col-md-12 col-md-offset-4">
       <div class=" panel-default">
@@ -17,7 +17,7 @@
               <ul>
                 <%@order.order_meals.order(:id).each do |meal|%>
                   <li>
-                    <%=meal.steno%>
+                    <%=meal.recap%>
                     <i class="fas fa-regular fa-pencil icon-primary" data-bs-toggle="modal" data-bs-target="#ModalForm"></i>
                     <%=render partial: 'modal_form', 
                               locals: {order: @order, 

@@ -23,6 +23,13 @@ class OrderMeal < ApplicationRecord
     end
   end
 
+
+ def recap
+   dessert = self.dessert ? "Oui" : ""
+   drink = self.drink.name == "Sans Boisson" ? "/" : self.drink.name
+   return "#{self.menu.name} #{self.recipe.name} #{self.cooking.name} #{drink} #{dessert}"
+ end 
+
   def steno
     fries = (self.menu.name == "Menu" || self.menu.name == "Burger + Frites") ? " F" : " /"
     return self.recipe.name[0] + self.cooking.steno + fries + self.drink.steno

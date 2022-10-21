@@ -15,7 +15,7 @@ class Order < ApplicationRecord
     end
 
     def is_full?
-        return self.order_meals.size = self.quantity if self.order_meals.present?
+        return self.order_meals.size == self.quantity if self.order_meals.present?
     end
 
 

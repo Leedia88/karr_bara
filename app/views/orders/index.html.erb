@@ -9,11 +9,14 @@
         <ul class="timeline-1 text-black">
           <% @schedules.each do |schedule| %>
             <li class="event" data-date="<%=schedule.slot%>">
-              <p><%if schedule.available !=0%> Encore dispos : <%=schedule.available%> <%end%></p>
+              <h4><%if schedule.available !=0%> Reste : <%=schedule.available%> <%end%></h4>
               <p><%if schedule.orders.empty?%> Pas de commande 
                 <%else%>
                   <%schedule.orders.each do |order|%>
                     <%=order.user%> : <%=order.quantity%>
+                      <%order.order_meals.each do |meal|%>
+                      <div><%=meal.steno%></div>
+                      <%end%>
                     <%=link_to "Voir la commande", order_path(order)%>
                     <%end%>
                 <%end%></p>

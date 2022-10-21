@@ -85,6 +85,24 @@ label input[type="radio"]:checked~.design {
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.choose-burger {
+  display: flex;
+  justify-content: center;
+}
+
+.choose-burger .panel-default{
+  /* padding: 31%; */
+}
+.choose-burger .panel-body{
+min-width: 300px;
+max-width: 740px;
+padding: 10%;
+  margin-bottom: -50%;
+  background: #fff;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 /*************/
 /* TIME LINE */
 /*************/
