@@ -17,18 +17,19 @@
               <ul>
                 <%@order.order_meals.order(:id).each do |meal|%>
                   <li>
+                    <%=meal.id%>
                     <%=meal.recap%>
-                    <i class="fas fa-regular fa-pencil icon-primary" data-bs-toggle="modal" data-bs-target="#ModalForm"></i>
+                    <i class="fas fa-regular fa-pencil icon-primary" data-bs-toggle="modal" data-bs-target="#ModalForm<%=meal.id%>"></i>
                     <%=render partial: 'modal_form', 
                               locals: {order: @order, 
-                                        url: order_order_meal_path(@order.id, meal.id),
+                                        url: order_order_meal_path(@order.id, meal),
                                         method: :patch,
                                         order_meal: meal, 
                                         menus: @menus, 
                                         recipes: @recipes, 
                                         cookings: @cookings, 
                                         dessert: @dessert, 
-                                        drinks: @drinks }%>
+                                        drinks: @drinks}%>
                     <%if !@order.is_full?%>
                       <%=link_to "+1",  edit_order_order_meal_path(@order,meal, :duplicate => true)%>
                     <%end%>
@@ -36,9 +37,11 @@
                 <%end%>
               </ul>
             <%end%>
-            <button type="button" class="mt-3 btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <%if !@order.is_full?%>
+            <button type="button" class="mt-3 btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#ModalForm">
               Choisir le.s burger.s
             </button>
+            <%end%>
               <%# <%=render partial: 'modal_new_form', 
                               locals: {order: @order, 
                                         url: order_order_meals_path(@order),
@@ -75,8 +78,19 @@
 </div>
 
 
+<%=render partial: 'modal_form', 
+                              locals: {order: @order, 
+                                        url: order_order_meals_path(@order),
+                                        method: :post,
+                                        order_meal: @order_meal, 
+                                        menus: @menus, 
+                                        recipes: @recipes, 
+                                        cookings: @cookings, 
+                                        dessert: @dessert, 
+                                        drinks: @drinks}%>
+
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalFormNew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -92,7 +106,7 @@
          b.radio_button(class: "buttons", :label => b.text) 
        end %>
             </div>
-            <div>Burger :</div>
+            <div>Recette :</div>
             <div class="buttons">
               <%= form.collection_radio_buttons :recipe_id, @recipes, :id, :name , {:checked => @recipes.first.id} do |b|
          b.radio_button(class: "buttons", :label => b.text) 

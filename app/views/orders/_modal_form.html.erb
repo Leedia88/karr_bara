@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalForm<%=order_meal.id%>" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -15,13 +15,13 @@
          b.radio_button(class: "buttons", :label => b.text) 
        end %>
             </div>
-            <div>Burger :</div>
+            <div>Recette :</div>
             <div class="buttons">
               <%= form.collection_radio_buttons :recipe_id, recipes, :id, :name , {:checked => order_meal.recipe_id} do |b|
          b.radio_button(class: "buttons", :label => b.text) 
        end %>
             </div>
-            <div>Cuisson :</div>
+            <div>Steak :</div>
             <div class="buttons">
               <%= form.collection_radio_buttons :cooking_id, cookings, :id, :name , {:checked => order_meal.cooking_id} do |b|
          b.radio_button(class: "buttons", :label => b.text) 

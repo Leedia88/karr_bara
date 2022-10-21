@@ -18,7 +18,7 @@ class OrderMealsController < ApplicationController
       @drink_id = Drink.all.first.id 
     end
 
-    @order_meal = OrderMeal.create!(order_meal_params.merge(order:@order, drink_id: @drink_id))
+    @order_meal = OrderMeal.new(order_meal_params.merge(order:@order, drink_id: @drink_id))
     if @order_meal.save
       redirect_to order_path(@order)
     end
