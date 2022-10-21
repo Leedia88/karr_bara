@@ -51,11 +51,6 @@ class OrderMealsController < ApplicationController
   def show
   end
 
-  def index
-    puts params
-    @order_meals = OrderMeal.where(order_id:@order)
-  end
-
   def set_order
     @order = Order.find(params[:order_id].to_i)
   end

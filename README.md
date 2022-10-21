@@ -9,8 +9,8 @@
 
 Avec l'app, tu pourras :
 
-- 📒 Sélectionner ton créneau et réserver un nombre de bugers
-- 💪 Choisir ton menu à l'avance pour que ça soit prêt quand tu arrives!
+- 📒 Réserver ton bugers pour être sûr de manger!
+- 💪 Choisir un horaire et ton menu à l'avance pour que ça soit prêt quand tu arrives!
 
 Et bientôt...
 - 🤾‍♂️ Payer en ligne!
@@ -18,5 +18,5 @@ Et bientôt...
 
 ### N'hésite plus, réserve vite ton burger !
 
-- Check la super appli : https:/karr-bara.herokuapp.com
+- Check la super appli : https:/karrbara.herokuapp.com
 
